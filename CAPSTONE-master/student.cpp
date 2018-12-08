@@ -113,6 +113,117 @@ void Student::manageCourses(vector <Course>& allCourses)
     }
 }
 
+/*
+
+
+void Student::printFDPs(vector <FDP>& allFDPs)
+{
+    for (unsigned int i=0; i<allFDPs.size(); i++)
+    {
+        for (unsigned int j=0; j<_slistfdps.size(); j++){
+            if (strcmp(_slistfdps[j].full, allFDPs[i].getCode().full)==0)
+            {
+                cout << "\t\t\t" << " Code: " << allFDPs[i].getCode().full << "\t Name " << endl;
+            }
+        }
+    }
+
+}
+
+
+void Student::manageFDPs(vector <FDP>& allFDPs)
+{
+    ResCode fdpcode;
+    bool quit=0;
+
+
+    while (quit==0){
+        int r =-1;
+        cout << "Choose an action to perform:" << endl;
+        cout << "1.- Enroll Course" << endl;
+        cout << "2.- Delete Course" << endl;
+        cout << "3.- List Courses" << endl;
+        cout << "4.- Quit" << endl;
+        int sel;
+        getInt(&sel);
+
+            switch(sel)
+            {
+                case 1: cout << " Please enter the ID of the FDP to enroll: " << endl << endl;
+                        cout << "FDPs:" << endl;
+                        for (size_t i=0; i<allFDPs.size(); i++)
+                        {
+                            if (strcmp(allFDPs[i].getDegree().full,this->getDegree().full)==0)
+                            {
+                                cout << "\t FDP ID: " << allFDPs[i].getCode().full << endl;
+                                //cout << "\t FDP Name: " << allFDPs[i].getname() << endl;
+                                // Degree
+                            }
+                        }
+                        cout << "Enter code of the FDP to enroll:" << endl;
+
+                        getText(fdpcode.full, sizeof(fdpcode.full));
+
+
+                        for (unsigned int i=0; i<allFDPs.size(); i++)
+                        {
+                            if (strcmp(allFDPs[i].getDegree().full,this->getDegree().full)==0)
+                            {
+                                if (strcmp(fdpcode.full,allFDPs[i].getCode().full)==0){
+                                    r=(int)i;
+                                    break;
+                                }
+                            }
+                        }
+
+
+                        if (r==-1) {
+                            cout << " No FDP with this id" << endl;
+                        } else {
+                            _slistfdps.push_back(allFDPs[r].getCode());
+                        }
+
+                        cout << "\t The FDP that student: " << this->getID().id << " is enrolling is" << endl;
+                        this->printFDPs(allFDPs);
+
+                break;
+
+
+                case 2: cout << " Please enter the ID of the FDP to delete: " << endl << endl;
+                        cout << "FDPs:" << endl;
+                        this->printFDPs(allFDPs);
+                        cout << "Enter code of the FDP to delete:" << endl;
+
+                        getText(fdpcode.full, sizeof(fdpcode.full));
+
+                        for (unsigned int i=0; i<_slistfdps.size(); i++)
+                        {
+                            if (fdpcode.full==_slistfdps[i].full){
+                                r=i;
+                            }
+                         }
+
+                        if (r==-1) {
+                            cout << " No FDP with this id" << endl;
+                        } else {
+
+                            _slistfdps.erase(_slistfdps.begin()+r);
+                        }
+
+                        break;
+
+
+                case 3: cout << "\t The FDP that student: " << this->getID().id << " is enrolling is" << endl;
+                this->printFDPs(allFDPs);
+                break;
+
+                case 4: quit = 1; break;
+                default: cout << "Invalid command." << endl; break;
+            }
+    }
+}
+*/
+
 Student Student::readFromFile(ifstream& file)
 {
     ID id;
@@ -153,4 +264,7 @@ void Student::writeToFile(ofstream& _file, Student element)
         _file.write(element._slistcourses[i].full, sizeof(ResCode));
     }
 }
+
+
+
 

@@ -420,3 +420,76 @@ Student* UserManager::getStudent(const ID &id)
         }
         return nullptr;
 }
+
+Professor* UserManager::getProfessor(const ID &id)
+{
+        for (unsigned int i=0; i<_proflist.size(); i++)
+        {
+            if (strcmp(id.id, _proflist[i].getID().id)==0)
+            {
+                return &_proflist[i];
+            }
+        }
+        return nullptr;
+}
+
+
+Administrator* UserManager::getAdmin(const ID &id)
+{
+        for (unsigned int i=0; i<_adminlist.size(); i++)
+        {
+            if (strcmp(id.id, _adminlist[i].getID().id)==0)
+            {
+                return &_adminlist[i];
+            }
+        }
+        return nullptr;
+}
+
+
+
+
+int UserManager::login(){
+
+    ID identification;
+    char pass[32];
+    UniversityMember *user;
+    int mode=-1; // admin=0   professor=1    student=2
+    if (_studlist.size()==0 && _adminlist.size()==0 && _proflist.size()==0){
+        mode=0;
+    } else {
+    cout << "Please enter your ID:" << endl;
+    getText(identification.id, sizeof(identification.id));
+    user=this->getAdmin(identification);
+    if (user==nullptr) {
+        user=this->getProfessor(identification);
+        if (user==nullptr) {
+            user=this->getStudent(identification);
+            if (user==nullptr){
+                cout << "No user with ID " << identification.id << " found." << endl;
+                mode=-1;
+            }else{
+                cout << "Please enter your password:" << endl;
+                getText(pass, sizeof(pass));
+                if (strcmp(pass, user->getPassword())==0){
+                    cout << "SUCCESSFUL LOGIN" << endl << endl;
+                    mode=2;
+                }
+            }
+        } else {
+            cout << "Please enter your password:" << endl;
+            getText(pass, sizeof(pass));
+            if (strcmp(pass, user->getPassword())==0){
+                cout << "SUCCESSFUL LOGIN" << endl << endl;
+                mode=1;
+            }}
+    } else {
+        cout << "Please enter your password:" << endl;
+        getText(pass, sizeof(pass));
+        if (strcmp(pass, user->getPassword())==0){
+            cout << "SUCCESSFUL LOGIN" << endl << endl;
+            mode=0;
+        }
+    }
+  } return mode;
+}

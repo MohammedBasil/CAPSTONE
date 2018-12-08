@@ -73,6 +73,7 @@ void ResourceManager::createCourse()        // MODIFICADO
     cout << "Introduce ID of first professor" << endl;
     ID prof1 = ID::getFromConsole();
     cout << "Introduce ID of second professor" << endl;
+
     ID prof2 = ID::getFromConsole();
     unsigned int credits;
     cout << "Number of credits:" << endl;

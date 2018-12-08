@@ -2,6 +2,8 @@
 #define STUDENT_H
 #include "universitymember.h"
 #include "course.h"
+#include "seminar.h"
+#include "fdp.h"
 
 class Student : public UniversityMember
 {
@@ -17,6 +19,9 @@ class Student : public UniversityMember
     void printCourses(vector<Course>& allCourses);
     void manageCourses(vector<Course>& allCourses);
 
+   // void printFDPs(vector <FDP>& allFDPs);
+ //   void manageFDPs(vector <FDP>& allFDPs);
+
     void setCourses(vector<ResCode>& listcourses) { _slistcourses = listcourses; }
 
     static Student readFromFile(ifstream& file);
@@ -27,6 +32,8 @@ class Student : public UniversityMember
     virtual void setRole() override { _role = Role::Student; }
     ResCode _degree;
     vector <ResCode> _slistcourses;
+//    vector <ResCode> _slistfdps;
+
 
 
 };

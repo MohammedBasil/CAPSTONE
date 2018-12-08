@@ -17,7 +17,8 @@ SOURCES += \
     commons.cpp \
     resource.cpp \
     filereader.cpp \
-    filewriter.cpp
+    filewriter.cpp \
+    virtualcampus.cpp
 
 HEADERS += \
     universitymember.h \
@@ -33,4 +34,5 @@ HEADERS += \
     usermanager.h \
     resourcemanager.h \
     filereader.h \
-    filewriter.h
+    filewriter.h \
+    virtualcampus.h

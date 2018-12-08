@@ -5,15 +5,21 @@
 #include"administrator.h"
 #include<vector>
 #include"commons.h"
+#include "resourcemanager.h"
 
 
 using namespace std;
 
 class UserManager
 {
+    friend class ResourceManager;
 public:
     UserManager();
     ~UserManager();
+
+
+    int login();
+
     void createUser();
     void createStudent();
     void createProfessor();
@@ -31,7 +37,9 @@ public:
     void showAdmins();
 
     vector <Student> getStudlist(){return _studlist;}           //NUEVO
-    Student* getStudent(const ID &id);                          // NUEVO
+    Student* getStudent(const ID &id);
+    Professor* getProfessor(const ID &id);
+    Administrator* getAdmin(const ID &id);// NUEVO
 
     ID createID();
     ID createSIN();
